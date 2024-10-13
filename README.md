@@ -17,6 +17,7 @@ export interface Params {
     y: number, // 水印位置
     onWatermarkChanged: Function // 水印修改回掉函数
 }
+
 const watermark = new Watermark({
     container: 'dom节点',
     content: `watermark`,
