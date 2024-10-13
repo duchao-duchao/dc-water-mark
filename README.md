@@ -34,4 +34,5 @@ watermark.output();
 ```
 
 示例展示图片如下所示：
+
 ![示例](./example.png)
