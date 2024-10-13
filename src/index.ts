@@ -1,7 +1,15 @@
 import { isNullOrUndefined, isFunction, isDom } from './base';
+import { Params } from './type';
 
 export default class Watermark {
-  constructor(params) {
+  params: Params;
+  styleStr: string;
+  containerObserver: MutationObserver;
+  observer: MutationObserver;
+  watermarkDiv: HTMLElement;
+  flag: boolean;
+
+  constructor(params: Params) {
     this.params = Object.assign(
       {
         container: document.body,
@@ -68,17 +76,18 @@ export default class Watermark {
     canvas.setAttribute('height', `${height}px`);
 
     const ctx = canvas.getContext('2d');
-
-    ctx.clearRect(0, 0, width, height);
-    ctx.textBaseline = 'top';
-    ctx.textAlign = 'left';
-    ctx.fillStyle = color;
-    ctx.globalAlpha = opacity;
-    ctx.font = `${fontSize}px ${font}`;
-    ctx.translate(x, y);
-    ctx.rotate((Math.PI / 180) * rotate);
-    ctx.translate(-x, -y - fontSize);
-    ctx.fillText(content, x, y + fontSize);
+    if (ctx) {
+      ctx.clearRect(0, 0, width, height);
+      ctx.textBaseline = 'top';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = color;
+      ctx.globalAlpha = opacity;
+      ctx.font = `${fontSize}px ${font}`;
+      ctx.translate(x, y);
+      ctx.rotate((Math.PI / 180) * rotate);
+      ctx.translate(-x, -y - fontSize);
+      ctx.fillText(content, x, y + fontSize);
+    }
 
     return canvas.toDataURL();
   }

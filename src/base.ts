@@ -1,12 +1,12 @@
-export const isNullOrUndefined = (n) => {
+export const isNullOrUndefined = (n: any) => {
     return n === null || n === undefined;
 }
 
-export const isFunction = (n) => {
+export const isFunction = (n: any) => {
     return typeof n === 'function'
 }
 
-export const isDom = (n) => {
+export const isDom = (n: any) => {
     if (typeof HTMLElement === 'object') {
         return n instanceof HTMLElement
     }
