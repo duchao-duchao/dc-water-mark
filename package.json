@@ -1,6 +1,6 @@
 {
   "name": "dc-water-mark",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "在项目中添加水印功能",
   "main": "./lib/index.js",
   "scripts": {
